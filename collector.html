@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collector – Tblood</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+    body {
+      background-color: #fefefe;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar (from donor-page style) */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #e60023;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    .navbar .logo img {
+      height: 40px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+    .nav-links li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #c0001a;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #e60023;
+        height: calc(100vh - 60px);
+        width: 200px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .nav-links li a {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+
+    /* Hero */
+    .hero.small-hero {
+      background: linear-gradient(to right, #e60023, #c0001a);
+      color: white;
+      padding: 6rem 1rem 2rem;
+      text-align: center;
+    }
+
+    /* Info Section */
+    .register-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      background-color: #f5f9ff;
+      border-left: 5px solid #e60023;
+      margin-top: 1rem;
+    }
+    .register-info h2 {
+      margin-bottom: 1rem;
+    }
+    .register-info ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .info-image img {
+      max-width: 100%;
+      width: 300px;
+      height: auto;
+    }
+
+    /* Form Steps */
+    .form-steps {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .step {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .step.active {
+      background-color: #e60023;
+      color: white;
+      border-color: #e60023;
+    }
+
+    /* Form */
+    .register-form {
+      padding: 2rem 1rem;
+    }
+    .register-form h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .register-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .register-form label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+    }
+    .register-form input,
+    .register-form select {
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 0.3rem;
+      width: 100%;
+    }
+    .btn {
+      padding: 0.8rem;
+      background-color: #e60023;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #c0001a;
+    }
+
+    /* Modal & Social Bar & Footer */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s;
+      padding: 1rem;
+    }
+    .modal.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 2rem 1rem;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .social-bar {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      z-index: 999;
+    }
+    .social-bar a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      color: #e60023;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .social-bar a:hover {
+      background: #e60023;
+      color: #fff;
+      transform: scale(1.1);
+    }
+   footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #c1121f;
+      color: #fff;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="tblood.png" alt="BloodConnect Logo">
+    </a>
+    <div class="hamburger" aria-label="Menu toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="tblood-apk.html">APP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero small-hero">
+    <h1>Collector Registration</h1>
+    <p>Join BloodConnect’s lifesavers fill out the info below to get started.</p>
+  </header>
+
+  <!-- Info -->
+  <section class="register-info">
+    <div class="info-text">
+      <h2>🩸 Why Register?</h2>
+      <p>By registering as a donor, you help us:</p>
+      <ul>
+        <li>Maintain an up to date donor database</li>
+        <li>Match urgent patient requests in your area</li>
+        <li>Receive timely reminders about upcoming drives</li>
+        <li>Access exclusive health tips and digital badges</li>
+      </ul>
+    </div>
+    <div class="info-image">
+      <img src="uuo.png" alt="People donating blood">
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <div class="form-steps">
+    <span class="step active">Info</span>
+  </div>
+
+  <!-- Form -->
+  <section class="register-form">
+    <h2>Complete Your Details</h2>
+    <form action="https://formsubmit.co/submit36@outlook.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://tbloods.online/thankyou.html">
+
+      <label>Select
+        <select name="Collector" required>
+          <option value="">— Select —</option>
+          <option>Collector</option>
+        </select>
+      </label>
+      <label>Full Name
+        <input type="text" name="name" required>
+      </label>
+      <label>Gender
+        <select name="Gender" required>
+          <option value="">— Select —</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Others</option>
+        </select>
+      </label>
+      <label>Email Address
+        <input type="email" name="email" required>
+      </label>
+      <label>Phone Number
+        <input type="tel" name="phone" required>
+      </label>
+      <label>Blood Type Need
+        <select name="Blood Type Need" required>
+          <option value="">— Select —</option>
+          <option>A+</option><option>A−</option>
+          <option>B+</option><option>B−</option>
+          <option>O+</option><option>O−</option>
+          <option>AB+</option><option>AB−</option>
+        </select>
+      </label>
+      <label>Current City / Area
+        <input type="text" name="location" required>
+      </label>
+      <label>
+        <input type="checkbox" name="terms" required>
+        I confirm I meet all eligibility criteria.
+        <a href="#" onclick="openEligibilityModal()"></a>
+      </label>
+      <button type="submit" class="btn">Submit Registration</button>
+    </form>
+  </section>
+
+  <!-- Eligibility Modal -->
+  <div id="eligibilityModal" class="modal">
+    <div class="modal-content">
+      <h3>Collection Eligibility Criteria</h3>
+      <ul>
+        <li>Be aged 18–65</li>
+        <li>Weigh at least 50kg</li>
+        <li>Feel healthy on the day</li>
+        <li>No recent major surgeries</li>
+      </ul>
+      <button class="btn" onclick="closeEligibilityModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Social Bar -->
+  <div class="social-bar">
+    <a href="https://www.facebook.com/share/16SfCQaWCt/" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="mailto:contact@tbloods.online">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="tel:+880">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Tblood. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Hamburger toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+      }
+    });
+
+    // Modal controls
+    function openEligibilityModal() {
+      document.getElementById('eligibilityModal').classList.add('show');
+    }
+    function closeEligibilityModal() {
+      document.getElementById('eligibilityModal').classList.remove('show');
+    }
+  </script>
+</body>
+</html>

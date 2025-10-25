@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tblood</title>
+  <link rel="icon" href="ttt.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* VARIABLES */
+    :root {
+      --primary: #c1121f;
+      --primary-hover: #a30e18;
+      --secondary: #a8dadc;
+      --accent: #f4a261;
+      --background: #f1faee;
+      --text: #1d1f4d;
+      --text-light: #2c3e50;
+      --card-bg: #ffffff;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* GLOBAL RESET */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    /* BUTTON */
+    .btn {
+      background-color: var(--primary);
+      color: #fff;
+      padding: 0.8em 2em;
+      border: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-hover);
+      z-index: -1;
+      transition: transform 0.3s ease;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .btn:hover { 
+      color: white;
+    }
+    .btn:hover:before {
+      transform: scaleX(1);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:before {
+      background: var(--primary);
+    }
+    .btn-secondary:hover {
+      color: white;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(206, 40, 40, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      padding: 0.7rem 5%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo img { 
+      height: 45px;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover img {
+      transform: scale(1.1);
+    }
+    .logo h1 {
+      color: #ffffff;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    /* HAMBURGER MENU */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5em;
+      z-index: 1010;
+    }
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #ffffff;
+      border-radius: 3px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .hamburger::before { transform: translateY(-8px); }
+    .hamburger::after  { transform: translateY(5px); }
+
+    /* NAV LINKS - Enhanced Style */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links li a {
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+      color: #ffffff;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+    .nav-links li a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #ffffff;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+    .nav-links li a:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .nav-links li a:hover:after {
+      width: 100%;
+    }
+    .nav-links li a.active { 
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .nav-links li a.active:after {
+      width: 100%;
+      background: #ffffff;
+    }
+
+    /* HERO SECTION */
+    header.hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #780000 100%);
+      text-align: center;
+      padding: 10rem 1rem 6rem;
+      position: relative;
+      margin-top: 80px;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    header.hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: white;
+      font-weight: 700;
+      line-height: 1.2;
+      opacity: 0;
+      animation: fadeInUp 1s ease-in-out 0.2s forwards;
+    }
+    header.hero p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      animation: fadeInUp 1s ease-in-out 0.4s forwards;
+    }
+    .hero-btn {
+      opacity: 0;
+      animation: fadeInUp 1s ease-in-out 0.6s forwards;
+    }
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+      z-index: 1;
+    }
+
+    /* STATS SECTION */
+    .stats-section {
+      background: white;
+      padding: 4rem 0;
+      position: relative;
+      z-index: 10;
+      margin-top: -3rem;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+    }
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      max-width: 1000px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 1.5rem;
+      flex: 1;
+      min-width: 180px;
+      background: var(--background);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+    }
+    .stat-box:hover {
+      transform: translateY(-5px);
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .stat-text {
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 3rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section {
+      margin: 4rem 0;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    .section-description {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    /* ROLES GRID */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .role-card {
+      background: var(--card-bg);
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border-top: 5px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    .role-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--background) 0%, rgba(168, 218, 220, 0.1) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .role-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .role-card:hover:before {
+      opacity: 1;
+    }
+    .role-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+      padding: 1rem;
+      border-radius: 50%;
+      background: rgba(168, 218, 220, 0.1);
+    }
+    .role-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+    .role-card p {
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+    
+    /* DRIVE LIST */
+    .drive-list {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+    .drive-item {
+      display: flex;
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .drive-item:hover {
+      background: var(--background);
+    }
+    .drive-item:last-child {
+      border-bottom: none;
+    }
+    .drive-date {
+      background: var(--primary);
+      color: white;
+      min-width: 80px;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-right: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .drive-date .day {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .drive-date .month {
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    .drive-info {
+      flex: 1;
+    }
+    .drive-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    .drive-info p {
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .drive-info i {
+      color: var(--primary);
+    }
+    .drive-actions {
+      margin-left: 1rem;
+    }
+    
+    /* MAP SECTION */
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+      display: block;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 4rem 5% 2rem;
+      background: linear-gradient(to right, #780000, var(--primary));
+      color: #fff;
+      margin-top: 5rem;
+      position: relative;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+    .footer-column h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+    }
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+    .footer-links a:hover:after {
+      content: '→';
+      position: absolute;
+      left: -20px;
+      transition: left 0.3s ease;
+    }
+    .contact-info li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+      gap: 12px;
+    }
+    .contact-info i {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-top: 3px;
+    }
+    .social-section {
+      display: flex;
+      gap: 15px;
+      margin-top: 1.5rem;
+    }
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    .social-icon i {
+      font-size: 1.3rem;
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ANIMATION */
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* RESPONSIVE */
+    @media screen and (max-width: 992px) {
+      header.hero h1 {
+        font-size: 3rem;
+      }
+      .stats-container {
+        gap: 1.5rem;
+      }
+      .stat-box {
+        min-width: 160px;
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .nav-toggle { 
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+      }
+      
+      .navbar {
+        padding: 1rem 5%;
+      }
+      
+      .logo h1 {
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background: white;
+        flex-direction: column;
+        width: 280px;
+        height: 100vh;
+        padding: 100px 2rem 2rem;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+      .nav-links.open { 
+        right: 0;
+      }
+      .nav-links li { 
+        margin-bottom: 1.5rem;
+      }
+      .nav-links li a { 
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+        color: var(--text); /* Reset to dark text for mobile menu */
+        text-transform: none;
+        letter-spacing: normal;
+      }
+      .nav-links li a:after {
+        background: var(--primary); /* Red underline for mobile */
+        box-shadow: none;
+      }
+      .nav-links li a:hover,
+      .nav-links li a.active { 
+        color: var(--primary); /* Red hover for mobile menu */
+      }
+      
+      .nav-toggle.open .hamburger {
+        transform: rotate(45deg);
+      }
+      .nav-toggle.open .hamburger::before {
+        transform: translateY(0) rotate(-90deg);
+      }
+      .nav-toggle.open .hamburger::after {
+        opacity: 0;
+        transform: translateY(0);
+      }
+      
+      header.hero {
+        padding: 8rem 1rem 5rem;
+        margin-top: 70px;
+      }
+      header.hero h1 {
+        font-size: 2.5rem;
+      }
+      header.hero p {
+        font-size: 1.2rem;
+      }
+      
+      .stats-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .stat-box {
+        width: 100%;
+        max-width: 250px;
+      }
+      
+      .drive-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .drive-date {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      .drive-actions {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+      }
+      .drive-actions .btn {
+        width: 100%;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .logo h1 {
+        font-size: 1.3rem;
+      }
+      header.hero h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .section-description {
+        font-size: 1rem;
+      }
+      .roles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero" role="banner">
+    <div class="hero-pattern"></div>
+    
+    <nav class="navbar" aria-label="Main Navigation">
+      <a href="index.html" class="logo">
+        <img src="tblood.png" alt="Tblood logo">
+        <h1>Tblood</h1>
+      </a>
+      <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="join.html">Join Us</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="tblood-apk.html">APP</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Be Someone's Lifeline</h1>
+      <p>One donation can help three people. Join others in saving lives across Bangladesh.</p>
+      <a href="register.html" class="btn hero-btn">Become a Donor Today</a>
+    </div>
+  </header>
+
+
+
+  <main>
+    <section class="intro">
+      <h2>What We Do</h2>
+      <p class="section-description">
+        Tblood connects donors with recipients, organizes blood drives across Bangladesh, and builds a community dedicated to saving lives through blood donation.
+      </p>
+    </section>
+
+    <section class="roles">
+      <h2>Get Involved</h2>
+      <div class="roles-grid">
+        <div class="role-card">
+          <div class="role-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Donor</h3>
+          <p>Your one donation can help up to three patients in need. Join our lifesaving community today.</p>
+          <a href="register.html" class="btn">Sign Up as Donor</a>
+        </div>
+        
+        <div class="role-card">
+          <div class="role-icon">
+            <i class="fas fa-user-nurse"></i>
+          </div>
+          <h3>Collector</h3>
+          <p>Help us collect, store, and transport blood safely to hospitals and patients in need.</p>
+          <a href="collector.html" class="btn">Apply as Collector</a>
+        </div>
+        
+        <div class="role-card">
+          <div class="role-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile App</h3>
+          <p>Download our app to find donation centers, schedule appointments, and track your donations.</p>
+          <a href="tblood-apk.html" class="btn">Download Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="survey-section">
+      <h2>We Value Your Feedback</h2>
+      <p class="section-description">
+        Help us improve our services. Share your donation experience or suggestions to make Tblood better.
+      </p>
+      <div style="text-align: center;">
+        <a href="survey.html" class="btn">Take the Survey</a>
+      </div>
+    </section>
+
+    <section class="drives-section">
+      <h2>Upcoming Blood Drives</h2>
+      <p class="section-description">
+        Join us at our upcoming blood drives across Bangladesh. Your donation can make a difference.
+      </p>
+      
+      <div class="drive-list">
+        <div class="drive-item">
+          <div class="drive-date">
+            <div class="day">00</div>
+            <div class="month">/</div>
+          </div>
+          <div class="drive-info">
+            <h3>Process</h3>
+            <p><i class="fas fa-clock"></i> 00:00 AM - 0:00 PM</p>
+            <p><i class="fas fa-map-marker-alt"></i> Not</p>
+          </div>
+          <div class="drive-actions">
+            <a href="Tblood-Event.html" class="btn">Register</a>
+          </div>
+        </div>
+        
+
+        </div>
+      </div>
+      
+      <div class="map-section">
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.168014709204!2d88.59368531498093!3d24.37454798428262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fbef4b2e4c7f3f%3A0x2f3b2c3b2e4c7f3f!2sRajshahi!5e0!3m2!1sen!2sbd!4v1625848426912!5m2!1sen!2sbd"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Tblood Upcoming Drives Map - Rajshahi">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Tblood</h3>
+        <p>Donate blood. Save lives. Build community.</p>
+        <div class="social-section">
+          <a href="https://www.facebook.com/share/16SfCQaWCt/" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="tblood-apk.html">Download App</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>RAJSHAHI, BANGLADESH</span>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <span>+880</span>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <span>contact@tbloods.online</span>
+          </li>
+          <li>
+            <i class="fas fa-globe"></i>
+            <span>www.tbloods.online</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Tblood. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation toggle
+    const toggleBtn = document.querySelector('.nav-toggle');
+    const navMenu   = document.getElementById('nav-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', !expanded);
+      toggleBtn.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Stats animation
+    function animateValue(id, start, end, duration) {
+      let obj = document.getElementById(id);
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current.toLocaleString();
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+    
+    // Initialize stats when in view
+    let statsAnimated = false;
+    
+    function checkStats() {
+      const statsSection = document.querySelector('.stats-section');
+      const position = statsSection.getBoundingClientRect();
+      
+      // If stats section is in viewport and not animated yet
+      if(position.top < window.innerHeight && position.bottom >= 0 && !statsAnimated) {
+        animateValue("donor-count", 0, 12587, 2000);
+        animateValue("lives-saved", 0, 38452, 2000);
+        animateValue("drives-count", 0, 247, 1500);
+        animateValue("cities-count", 0, 42, 1000);
+        statsAnimated = true;
+      }
+    }
+    
+    // Check on scroll and on load
+    window.addEventListener('scroll', checkStats);
+    window.addEventListener('load', checkStats);
+  </script>
+</body>
+</html>

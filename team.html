@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tblood | Our Team & Volunteers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9fb;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #c62828;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .navbar .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #b71c1c;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin-bottom: 4px;
+      border-radius: 2px;
+    }
+
+    /* Hero */
+    .hero.small-hero {
+      text-align: center;
+      padding: 6rem 1rem 2rem;
+      background: #e53935;
+      color: #fff;
+    }
+
+    .content {
+      padding-top: 80px;
+      text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .member {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .member:hover {
+      transform: translateY(-5px);
+    }
+
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .member h3 {
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .member p {
+      font-size: 0.9rem;
+      color: #444;
+      margin: 0.25rem 0;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 1rem;
+    }
+
+    .social-icons a img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.15);
+    }
+
+    footer {
+      text-align: center;
+      background-color: #dc3545;
+      color: #fff;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background-color: #c62828;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        height: calc(100vh - 60px);
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links li {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .nav-links li a {
+        width: 100%;
+        padding: 0.8rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="tblood.png" alt="BloodConnect Logo">
+    </a>
+    <div class="hamburger" aria-label="Menu toggle" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+       <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="team.html"  class="active">Our Team</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="tblood-apk.html">APP</a></li>
+    </ul>
+  </nav>
+
+
+
+  <section class="content">
+    <h1>Meet Our Core Team</h1>
+
+    <p class="tagline">
+      Driven by compassion, powered by technology this is the heart of Tblood.
+    </p>
+<p class="tagline">
+                                ..
+    </p>
+    <div class="team-grid">
+      <div class="member">
+        <img src="1000018150-01.jpeg" alt="TOHA">
+        <h3>ABRAR ISHRAQ TOHA</h3>
+        <p>Founder & President</p>
+        <p>Leads Tblood’s mission to save lives through community-driven blood donations.</p>
+        <div class="social-icons">
+           <a href="https://www.facebook.com/share/16SYA8zvQz/?mibextid=ZbWKwL"><img src="12.webp" alt="Facebook"></a>
+          <a href="mailto:pmtoha05@protonmail.com" class="custom-button"><img src="uuyy.webp" alt="Email Icon">
+          <a href="https://pmtoha.site/"><img src="wrt.png" alt="web"></a>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="assets/member2.jpg" alt="Operations Lead">
+        <h3>Operations Lead</h3>
+        <p>Coordinates donation efforts across regions.</p>
+        <div class="social-icons">
+          <a href="#"><img src="12.webp" alt="Facebook"></a>
+          <a href="mailto:"><img src="uuyy.webp" alt="Email Icon"></a>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="assets/member3.jpg" alt="Community Outreach">
+        <h3>Community Outreach</h3>
+        <p>Promotes awareness campaigns and fosters donor relationships.</p>
+        <div class="social-icons">
+          <a href="#"><img src="12.webp" alt="Facebook"></a>
+          <a href="mailto:"><img src="uuyy.webp" alt="Email Icon"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <h2>Our Volunteers</h2>
+
+    <p class="tagline">
+      These amazing souls dedicate their time and energy to support every blood donation effort.
+    </p>
+<p class="tagline">
+                                ..
+    </p>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/volunteer1.jpg" alt="Field Volunteer">
+        <h3>Field Volunteer</h3>
+        <p>Supports transportation and live coordination during blood drives.</p>
+      </div>
+      <div class="member">
+        <img src="assets/volunteer2.jpg" alt="Campaign Volunteer">
+        <h3>Campaign Volunteer</h3>
+        <p>Engages communities and spreads awareness online.</p>
+      </div>
+      <div class="member">
+        <img src="assets/volunteer3.jpg" alt="Tech Support">
+        <h3>Tech Support</h3>
+        <p>Manages digital tools and optimizes donor registration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <h2>Connect With Us</h2>
+
+    <p class="tagline">
+      We’d love to hear from you whether you want to volunteer, donate, or spread the word.
+    </p>
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com/share/16SfCQaWCt/"><img src="12.webp" alt="Facebook"></a>
+      <a href="mailto:contact@tbloods.online" title="Email"><img src="uuyy.webp" alt="Email"></a>
+      <a href="tel:+880" title="Call Us"><img src="rrrrrrr.png" alt="Phone"></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tblood. All rights reserved.</p>
+  </footer>
+
+
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+      }
+    });
+  </script>
+<script>
+const currentPage = window.location.pathname.split("/").pop();
+const links = document.querySelectorAll(".nav-links li a");
+
+links.forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+</script>
+</body>
+</html>

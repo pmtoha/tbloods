@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tblood - Event Details</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Custom styles */
+    body {
+      background-color: #f8f9fa;
+    }
+    
+    .event-header {
+      background: linear-gradient(135deg, #dc3545, #6c757d);
+      color: white;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+      position: relative; /* Added for positioning the back button */
+    }
+    
+    .back-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+    
+    .info-card {
+      border-left: 4px solid #dc3545;
+      transition: transform 0.3s;
+    }
+    
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .status-badge {
+      background-color: #ffc107;
+      color: #212529;
+      font-weight: bold;
+    }
+    
+    /* Custom disabled-button look */
+    .btn-secondary {
+      background: #6c757d;
+      border: none;
+      opacity: 0.6;
+    }
+    .btn-secondary:hover {
+      background: #6c757d;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="event-header text-center">
+    <!-- Back to Home Button -->
+    <a href="index.html" class="btn btn-light back-button">
+      <i class="bi bi-arrow-left"></i> Back to Home
+    </a>
+    
+    <div class="container">
+      <h1 class="display-4 fw-bold">Tblood Event</h1>
+      <p class="lead">Community Blood Donation Drive</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="py-4">
+    <div class="container">
+      
+      <!-- Notice -->
+      <div class="mb-4 p-3 bg-warning text-dark rounded">
+        <p class="mb-0">
+          <strong>Please note:</strong> This event is currently in planning phase. Date, time, and venue details will be announced soon.
+        </p>
+      </div>
+      
+      <!-- Event Details Cards -->
+      <div class="row g-4 mb-5">
+        <!-- Date Card -->
+        <div class="col-md-4">
+          <div class="card info-card h-100">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <i class="bi bi-calendar3 fs-1 text-danger"></i>
+              </div>
+              <h5 class="card-title">Event Date</h5>
+              <p class="card-text">
+                <span class="status-badge px-3 py-1 rounded">Not Selected Yet</span>
+              </p>
+              <p class="text-muted small">We'll announce the date soon</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Time Card -->
+        <div class="col-md-4">
+          <div class="card info-card h-100">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <i class="bi bi-clock fs-1 text-danger"></i>
+              </div>
+              <h5 class="card-title">Event Time</h5>
+              <p class="card-text">
+                <span class="status-badge px-3 py-1 rounded">Not Selected Yet</span>
+              </p>
+              <p class="text-muted small">Timings will be confirmed</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Place Card -->
+        <div class="col-md-4">
+          <div class="card info-card h-100">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <i class="bi bi-geo-alt fs-1 text-danger"></i>
+              </div>
+              <h5 class="card-title">Event Location</h5>
+              <p class="card-text">
+                <span class="status-badge px-3 py-1 rounded">Not Selected Yet</span>
+              </p>
+              <p class="text-muted small">Venue details coming soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Additional Information -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">About Tblood</h5>
+          <p class="card-text">
+            Tblood is a nonprofit blood donation network founded in 2024 by a group of visionary students. We’re here to ensure that every patient who needs blood finds it fast. Through outreach, education, and innovative tech, we’re reshaping how communities think about donation.
+          </p>
+          <p class="card-text">
+            Donate blood. Save lives. Build community.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Footer copyright -->
+      <p class="mt-4 text-muted text-center">&copy; 2025 Tblood. All rights reserved.</p>
+    </div>
+  </section>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

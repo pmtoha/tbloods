@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tblood - APP</title>
+    <!-- OG Image Meta Tag -->
+    <meta property="og:image" content="assets/preview.png">
+    <link rel="icon" href="ttt.png" type="image/png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- CSS Reset & Base Styles --- */
+        :root {
+            --primary-color: #121212;
+            --secondary-color: #FFFFFF;
+            --accent-color: #4A4A4A;
+            --light-gray: #F5F5F7;
+            --border-color: #EAEAEA;
+            --font-family: 'Manrope', sans-serif;
+            --transition-speed: 0.3s;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1400px; 
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .section-padding {
+            padding: 100px 0;
+        }
+        h1, h2, h3 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+        }
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        p {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            max-width: 600px;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- Header & Navigation --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color var(--transition-speed) ease;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .logo-text span {
+            color: #ff4d4d;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            position: relative;
+            transition: color var(--transition-speed) ease;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        /* --- Hero Section --- */
+        #hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            text-align: center;
+        }
+        #hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #hero .hero-content h1 {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #hero .hero-content p {
+            margin: 25px auto 40px;
+            font-size: 1.25rem;
+        }
+        #hero .hero-image-wrapper {
+            margin-top: 80px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+        #hero .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        /* --- Features Section --- */
+        #features {
+            background-color: var(--light-gray);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .feature-card .icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            font-size: 1rem;
+        }
+        /* --- How It Works Section --- */
+        .how-it-works-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 80px;
+            text-align: center;
+        }
+        .step {
+            flex: 1;
+            padding: 0 20px;
+        }
+        .step .step-number {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .step p {
+             font-size: 1rem;
+        }
+        /* --- Download Section --- */
+        #download {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+        #download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            z-index: -1;
+        }
+        #download h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        #download p {
+            color: #ddd;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+        .version-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .version-item {
+            text-align: center;
+        }
+        .version-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+        .version-item p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 30px 0 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 75, 43, 0.6);
+        }
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        .security-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ddd;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .security-note i {
+            color: #4CAF50;
+            margin-right: 5px;
+        }
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 60px 0;
+        }
+        .step-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            max-width: 280px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .step-number {
+            background: linear-gradient(45deg, #1a2a6c, #b21f1f);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        .step-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .step-card p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+        /* --- Footer --- */
+        footer {
+            background-color: var(--light-gray);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-logo img {
+             height: 40px;
+             opacity: 0.7;
+        }
+        .social-icons {
+            display: flex;
+            gap: 25px;
+        }
+        .social-icons a {
+            display: inline-block;
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .social-icons img {
+            width: 32px;
+            height: 32px;
+        }
+        footer p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        /* --- Hamburger Menu Icon --- */
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            width: 24px;
+            height: 18px;
+            position: relative;
+            z-index: 1001;
+        }
+        .nav-toggle span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        .nav-toggle span:nth-child(1) { top: 0px; }
+        .nav-toggle span:nth-child(2) { top: 7px; }
+        .nav-toggle span:nth-child(3) { top: 14px; }
+        .nav-toggle.active span:nth-child(1) { top: 7px; transform: rotate(135deg); }
+        .nav-toggle.active span:nth-child(2) { opacity: 0; left: -24px; }
+        .nav-toggle.active span:nth-child(3) { top: 7px; transform: rotate(-135deg); }
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+        }
+        @media (max-width: 768px) {
+            .section-padding { padding: 80px 0; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .container {
+                padding: 0 20px;
+            }
+            
+            #hero { 
+                padding-top: 120px; 
+                padding-bottom: 60px;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--secondary-color);
+                transition: left var(--transition-speed) ease;
+                padding-top: 80px;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .how-it-works-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            .step {
+                max-width: 400px;
+            }
+            
+            #hero .hero-image-wrapper {
+                max-width: 280px;
+                margin-top: 50px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            #hero .hero-image-wrapper {
+                max-width: 450px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar container">
+            <a href="#" class="logo">
+            <img src="tblood.png" alt="Tblood Logo" class="logo-icon" />
+         </a>
+            <ul class="nav-links">
+               <li><a href="index.html" class="active">Home</a></li>
+               <li><a href="about.html">About Us</a></li>
+               <li><a href="team.html">Our Team</a></li>
+               <li><a href="join.html">Join Us</a></li>
+               <li><a href="register.html">Register</a></li>
+               <li><a href="tblood-apk.html"  class="active">APP</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+  <!-- Download Section -->
+        <section id="download" class="section-padding">
+            <div class="container fade-in">
+                <h2>Download <span style="color: #ffdd40;">Tblood</span> Now</h2>
+                <p>Join thousands of users who are making a difference in their communities</p>
+                
+                <div class="version-info">
+                    <div class="version-item">
+                        <h3>Current Version</h3>
+                        <p>v1.1.0</p>
+                    </div>
+                    <div class="version-item">
+                        <h3>File Size</h3>
+                        <p>6.41 MB</p>
+                    </div>
+                    <div class="version-item">
+                        <h3>Updated</h3>
+                        <p>Sep 21, 2025</p>
+                    </div>
+                </div>
+                      <center>
+                <button id="downloadBtn" class="download-btn">
+                    <i class="fas fa-download"></i> Download APK
+                </button>
+                      </center>
+                <p class="security-note">
+                    <i class="fas fa-shield-alt"></i> 
+                    This APK is 100% safe and free from any malware. Our app is regularly scanned for security threats.
+                </p>
+            </div>
+        </section>
+        <section id="hero" class="section-padding">
+            <div class="container">
+                <div class="hero-content fade-in">
+                            <p>Donate blood. Save lives. Build community.</p>
+                    <a href="#download" class="btn btn-primary">Download for Free</a>
+                </div>
+                <div class="hero-image-wrapper fade-in" style="transition-delay: 0.2s;">
+                    <img src="Phone.png" alt="Tblood App Interface">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer-content">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/177G5DzBrZ/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
+                    <img src="12.webp" alt="Facebook">
+                </a>
+                <a href="mailto:contact@tbloods.online" target="_blank" rel="noopener noreferrer" aria-label="Contact us via email">
+                    <img src="uuyy.webp" alt="Mail">
+                </a>
+            </div>
+            <p>© 2025 Tblood. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Navigation ---
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) {
+                            navToggle.classList.remove('active');
+                            navLinks.classList.remove('active');
+                        }
+                    });
+                });
+            }
+            // --- Fade-in on Scroll Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            const elementsToFadeIn = document.querySelectorAll('.fade-in');
+            elementsToFadeIn.forEach(el => observer.observe(el));
+            
+            // --- Download Function for Tblood_v1.1.0.apk ---
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const referrer = urlParams.get('ref');
+                    
+                    // Simulate download process
+                    downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+                    downloadBtn.classList.add('downloading');
+                    
+                    // Simulate download delay
+                    setTimeout(() => {
+                        // Direct download link for Tblood_v1.1.0.apk
+                        const downloadUrl = 'Tblood_v1.1.0.apk';
+                        
+                        // If there's a referrer, you can log it here if needed
+                        if (referrer) {
+                            console.log('Referrer detected:', referrer);
+                            // You can add referral tracking code here if needed
+                        }
+                        
+                        // Start the download
+                        const link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = 'Tblood_v1.1.0.apk';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Show success message
+                        downloadBtn.innerHTML = '<i class="fas fa-check"></i> Download Complete!';
+                        downloadBtn.classList.remove('downloading');
+                        downloadBtn.classList.add('downloaded');
+                        
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download APK';
+                            downloadBtn.classList.remove('downloaded');
+                        }, 3000);
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+<script>
+const currentPage = window.location.pathname.split("/").pop();
+const links = document.querySelectorAll(".nav-links li a");
+
+links.forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+</script>
+
+
+</body>
+</html>

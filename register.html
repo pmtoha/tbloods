@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tblood - Donor Registration</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #c62828;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .navbar .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.2s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background-color: #b71c1c;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin-bottom: 4px;
+      border-radius: 2px;
+    }
+
+    /* Hero */
+    .hero.small-hero {
+      text-align: center;
+      padding: 6rem 1rem 2rem; /* bump for fixed navbar */
+      background: #e53935;
+      color: #fff;
+    }
+
+    /* Registration Info & Form */
+    .register-info,
+    .register-form {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1.5rem 2rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .register-info h2,
+    .register-form h2 {
+      color: #c62828;
+      text-align: center;
+    }
+    .subtitle,
+    .note {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    fieldset {
+      border: none;
+      margin-bottom: 1.5rem;
+    }
+    legend {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 0.5rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    input,
+    select {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .terms {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .primary-btn {
+      display: block;
+      width: 100%;
+      background: #c62828;
+      color: #fff;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .primary-btn:hover {
+      background: #b71c1c;
+    }
+
+    /* Social Media Section */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .social-icons a img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .social-icons a:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #c62727;
+      color: #ffffff;
+      margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #c62828;
+        height: calc(100vh - 60px);
+        width: 200px;
+        flex-direction: column;
+        align-items: start;
+        padding-top: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .nav-links li a {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .register-info,
+      .register-form {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      input,
+      select {
+        padding: 0.6rem;
+      }
+      .primary-btn {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="tblood.png" alt="Tblood Logo">
+    </a>
+    <div class="hamburger" aria-label="Menu toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="register.html" class="active">Register</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="tblood-apk.html">APP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero small-hero">
+    <h1>Donor Registration</h1>
+    <p>Join BloodConnect’s lifesavers fill out the info below to get started.</p>
+  </header>
+
+  <!-- Why Register -->
+  <section class="register-info">
+    <h2>Why Register?</h2>
+    <p>By registering as a donor, you help us:</p>
+    <ul>
+      <li>Maintain an up to date donor database.</li>
+      <li>Match urgent patient requests in your area.</li>
+      <li>Receive timely reminders about upcoming drives.</li>
+      <li>Access exclusive health tips and digital badges.</li>
+    </ul>
+  </section>
+
+  <!-- Registration Form -->
+  <section class="register-form">
+    <h2>Become a Lifesaver</h2>
+    <p class="subtitle">We value your time and care. Your data will be securely handled.</p>
+
+    <form action="https://formsubmit.co/submit36@outlook.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://tbloods.online/thankyou.html">
+<label>Donor
+  <select name="Donor" required>
+    <option value="" disabled selected>Donor</option>
+    <option value="male">Donor</option>
+          </select>
+</label>
+      <fieldset>
+        <legend>🧍 Personal Information</legend>
+        <label>Full Name
+          <input type="text" name="name" required />
+        </label>
+        <label>Date of Birth
+          <input type="date" name="dob" required />
+        </label>
+
+<label>Gender
+  <select name="gender" required>
+    <option value="" disabled selected>Select your gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+      </select>
+</label>
+
+        <label>Current City / Area
+          <input type="text" name="location" placeholder="e.g. Rajshahi City" required />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>📞 Contact Details</legend>
+        <label>Email Address
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label>Phone Number
+          <input type="tel" name="phone" placeholder="+8801XXXXXXX" required />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>🩸 Donation Info</legend>
+        <label>Blood Type
+          <select name="blood_type" required>
+            <option value="">-- Select Blood Type --</option>
+            <option>A+</option><option>A−</option>
+            <option>B+</option><option>B−</option>
+            <option>O+</option><option>O−</option>
+            <option>AB+</option><option>AB−</option>
+          </select>
+        </label>
+        <label>Last Donation Date
+          <input type="date" name="last_donation" />
+        </label>
+      </fieldset>
+
+      <label class="terms">
+        <input type="checkbox" name="terms" required />
+        ✅ I confirm I meet the eligibility criteria: 18–60 years, healthy, and weigh at least 50 kg.
+      </label>
+
+      <button type="submit" class="primary-btn">Register Now</button>
+      <p class="note">You’ll receive a confirmation email within 24 hours of submission.</p>
+    </form>
+  </section>
+
+  <!-- Social Icons -->
+  <div class="social-icons">
+    <a href="https://www.facebook.com/tbloods23" target="_blank" aria-label="Facebook">
+      <img src="12.webp" alt="Facebook Icon" />
+    </a>
+    <a href="mailto:contact@tbloods.online" aria-label="Email">
+      <img src="uuyy.webp" alt="Email Icon" />
+    </a>
+    <a href="tel:+880" aria-label="Phone">
+      <img src="rrrrrrr.png" alt="Phone Icon" />
+    </a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Tblood. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked (optional)
+    navLinks.addEventListener('click', e => {
+      if(e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+      }
+    });
+  </script>
+  <script>
+const currentPage = window.location.pathname.split("/").pop();
+const links = document.querySelectorAll(".nav-links li a");
+
+links.forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+</script>
+
+
+</body>
+</html>

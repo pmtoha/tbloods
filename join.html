@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join Us — Tblood</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    :root { --accent: #e92626; }
+
+    body {
+      padding-top: 100px; /* space for fixed navbar */
+    }
+
+    /* Bootstrap-based utilities */
+    .btn-accent {
+      background-color: var(--accent);
+      border: none;
+      color: #fff;
+    }
+    .btn-accent:hover {
+      background-color: #ee1c1c;
+    }
+    .form-check-inline {
+      margin-right: 1rem;
+    }
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      transition: transform 0.2s;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 575.98px) {
+      .navbar-nav .nav-link {
+        text-align: center;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    /* ——— Custom Navbar Styles ——— */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #e60023;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+    .navbar .logo img {
+      height: 35px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+    .nav-links li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background 0.2s;
+      text-decoration: none;             /* remove underline */
+    }
+    .nav-links li a:hover,
+    .nav-links li a:focus,
+    .nav-links li a.active {
+      background-color: #c0001a;
+      text-decoration: none;             /* ensure no underline */
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #e60023;
+        height: calc(100vh - 60px);
+        width: 200px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .nav-links li a {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+        text-decoration: none;             /* reinforce no underline */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="tblood.png" alt="Tblood Logo" />
+    </a>
+    <div class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+       <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="join.html"  class="active">Join Us</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="tblood-apk.html">APP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Join Form -->
+  <main class="container my-5">
+    <h1 class="mb-4 text-center">Join Our Team</h1>
+    <form
+      action="https://formsubmit.co/submit36@outlook.com"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="_captcha" value="false" />
+      <input
+        type="hidden"
+        name="_next"
+        value="https://tbloods.online/thankyou.html"
+      />
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <label for="joinSelect" class="form-label">Join As</label>
+          <select id="joinSelect" name="Join Us" class="form-select" required>
+            <option value="">— Select —</option>
+            <option>join Us</option>
+  
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            name="Full Name"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="Phone"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="photo" class="form-label">Upload Photo</label>
+          <input
+            type="file"
+            id="photo"
+            name="photo"
+            accept=".jpg,.png,.jpeg"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="gender" class="form-label">Gender</label>
+          <select
+            id="gender"
+            name="Gender"
+            class="form-select"
+            required
+          >
+            <option value="">— Select —</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Others</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="qualification" class="form-label">Highest Qualification</label>
+          <select
+            id="qualification"
+            name="Qualification"
+            class="form-select"
+            required
+          >
+            <option value="">— Select —</option>
+            <option>SSC</option>
+            <option>HSC</option>
+            <option>Bachelor’s Degree</option>
+            <option>Master’s Degree</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="field" class="form-label">Field of Study</label>
+          <input
+            type="text"
+            id="field"
+            name="Field of Study"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="experience" class="form-label">Years of Experience</label>
+          <input
+            type="number"
+            id="experience"
+            name="Experience"
+            min="0"
+            max="50"
+            step="1"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="position" class="form-label">Position Applied For</label>
+          <select
+            id="position"
+            name="Position"
+            class="form-select"
+            required
+          >
+            <option value="">— Select —</option>
+            <option>Donor</option>
+            <option>Collector</option>
+            <option>Volunteer</option>
+            <option>Intern</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="bloodGroup" class="form-label">Blood Group</label>
+          <select
+            id="bloodGroup"
+            name="Blood Group"
+            class="form-select"
+            required
+          >
+            <option value="">— Select —</option>
+            <option>A+</option>
+            <option>A−</option>
+            <option>B+</option>
+            <option>B−</option>
+            <option>O+</option>
+            <option>O−</option>
+            <option>AB+</option>
+            <option>AB−</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <fieldset>
+            <legend class="form-label">Relevant Skills</legend>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="skill1"
+                name="Skills[]"
+                value="training"
+              />
+              <label class="form-check-label" for="skill1">Training & Teaching</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="skill2"
+                name="Skills[]"
+                value="communication"
+              />
+              <label class="form-check-label" for="skill2">Communication</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="col-md-6">
+          <label for="cv" class="form-label">Upload Your CV</label>
+          <input
+            type="file"
+            id="cv"
+            name="cv"
+            accept=".pdf,.doc,.docx"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="coverLetter" class="form-label">Cover Letter</label>
+          <textarea
+            id="coverLetter"
+            name="Cover Letter"
+            rows="4"
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-accent btn-lg mt-3">
+            Submit Application
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- Get Involved Section -->
+  <section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2>Get Involved</h2>
+      <p class="mb-4">
+        Whether you want to donate, volunteer, or support the cause, we
+        welcome you.
+      </p>
+      <div class="d-flex justify-content-center gap-4">
+        <a
+          href="https://www.facebook.com/tbloods23"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <img
+            src="12.webp"
+            alt="Facebook Icon"
+            class="social-icon"
+          />
+        </a>
+        <a href="mailto:contact@tbloods.online" aria-label="Email">
+          <img src="uuyy.webp" alt="Email Icon" class="social-icon" />
+        </a>
+        <a href="tel:+880" aria-label="Phone">
+          <img src="rrrrrrr.png" alt="Phone Icon" class="social-icon" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-light text-center">
+    <div class="container">
+      <p class="mb-1">© 2025 Tblood. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile menu
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    hamburger.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", isOpen);
+    });
+    navLinks.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") {
+        navLinks.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  
+<script>
+const currentPage = window.location.pathname.split("/").pop();
+const links = document.querySelectorAll(".nav-links li a");
+
+links.forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+</script>
+
+</body>
+</html>

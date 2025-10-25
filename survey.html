@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Tblood — Join Us</title>
+  <style>
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      color: #222;
+      overflow-x: hidden;
+      /* Push everything below the fixed header (≈60px tall) */
+      padding-top: 60px;
+    }
+
+    /* Navbar (fixed) */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #c1121f;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      transition: transform 0.5s ease;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+      display: block;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background: #fff;
+      color: #c1121f;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    /* Main Content Wrapper */
+    .content {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      color: #c1121f;
+    }
+    .survey-form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    .survey-form input,
+    .survey-form textarea,
+    .survey-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .btn {
+      margin-top: 25px;
+      background-color: #c1121f;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #c1121f;
+      color: #fff;
+      margin-top: 50px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .social-icons a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+    .social-icons a:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: absolute;
+        top: 60px;            /* slide-in menu starts below fixed header */
+        right: 0;
+        height: calc(100vh - 60px);
+        background: #c1121f;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+        transform: translateX(100%);
+      }
+      .nav-links.nav-active {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        opacity: 0;
+      }
+      .nav-links.nav-active li {
+        opacity: 1;
+        animation: navLinkFade 0.5s ease forwards;
+      }
+      .nav-links li a {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+      }
+      .hamburger.toggle span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.toggle span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.toggle span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+    @keyframes navLinkFade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="tblood.png" alt="Tblood Logo" />
+    </a>
+    <ul class="nav-links">
+   <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="survey.html"  class="active">Survey</a></li>
+      <li><a href="tblood-apk.html">APP</a></li>
+    </ul>
+    <div class="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <section class="content">
+    <h1>Survey</h1>
+    <form class="survey-form" action="https://formsubmit.co/submit36@outlook.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://tbloods.online/thankyou.html">
+
+      <label>Survey
+        <select name="role" required>
+          <option value="">— Select —</option>
+          <option value="Survey">Survey</option>
+        </select>
+      </label>
+
+      <label>Full Name
+        <input type="text" name="name" required />
+      </label>
+
+      <label>Email Address
+        <input type="email" name="email" required />
+      </label>
+
+      <label>Phone Number
+        <input type="tel" name="phone" required />
+      </label>
+
+      <label>Blood Group
+        <select name="blood_group" required>
+          <option value="">— Select —</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </label>
+
+      <label>Gender
+        <select name="gender" required>
+          <option value="">— Select —</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label>Interested In
+        <select name="interest" required>
+          <option value="">— Select —</option>
+          <option value="donor">Donor</option>
+          <option value="collector">Collector</option>
+          <option value="volunteer">Volunteer</option>
+          <option value="partner">Hospital/Clinic Partner</option>
+        </select>
+      </label>
+
+      <label>How did you hear about us?
+        <input type="text" name="referral" />
+      </label>
+
+      <label>How likely are you to donate in 3 months?
+        <select name="likelihood" required>
+          <option value="">— Select —</option>
+          <option value="very_likely">Very Likely</option>
+          <option value="likely">Likely</option>
+          <option value="unsure">Unsure</option>
+          <option value="unlikely">Unlikely</option>
+        </select>
+      </label>
+
+      <label>Donated blood before?
+        <select name="donated_before" required>
+          <option value="">— Select —</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </label>
+
+      <label>If yes, how many times?
+        <input type="number" name="donation_count" min="0" />
+      </label>
+
+      <label>Who motivates you to donate?
+        <textarea name="motivation" rows="3"></textarea>
+      </label>
+
+      <label>Suggestions to improve
+        <textarea name="suggestions" rows="3" placeholder="e.g., Mobile blood drives, better awareness, incentives..."></textarea>
+      </label>
+
+      <label>Comments or Questions
+        <textarea name="comments" rows="4" placeholder="We'd love to hear your thoughts."></textarea>
+      </label>
+
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; margin-top: 40px;">Get Involved</h2>
+    <p style="text-align:center;">
+      Whether you want to donate, volunteer, or support the cause, we welcome you.
+         </p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/tbloods23" target="_blank">
+        <img src="12.webp" alt="Facebook" />
+      </a>
+      <a href="mailto:contact@tbloods.online">
+        <img src="uuyy.webp" alt="Email" />
+      </a>
+      <a href="tel:+880">
+        <img src="rrrrrrr.png" alt="Phone" />
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tblood. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger   = document.querySelector('.hamburger');
+      const nav      = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = 
+              `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+        burger.classList.toggle('toggle');
+      });
+    });
+  </script>
+  <script>
+const currentPage = window.location.pathname.split("/").pop();
+const links = document.querySelectorAll(".nav-links li a");
+
+links.forEach(link => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
+});
+</script>
+</body>
+</html>
