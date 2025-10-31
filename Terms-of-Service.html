@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Tblood</title>
+    <style>
+        :root {
+            --primary-color: #c62828;
+            --secondary-color: #d32f2f;
+            --accent-color: #ff5252;
+            --light-color: #ffebee;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ffebee;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: #ffccbc;
+        }
+        
+        .terms-of-service {
+            padding: 3rem 0;
+        }
+        
+        .terms-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h1 i {
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 0.8rem 0;
+            font-size: 1.2rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .student-notice {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .student-notice h3 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .student-notice h3 i {
+            margin-right: 10px;
+        }
+        
+        .ngo-notice {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .ngo-notice h3 {
+            color: #ef6c00;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ngo-notice h3 i {
+            margin-right: 10px;
+        }
+        
+        .last-updated {
+            color: #777;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+        
+        .contact-info {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .copyright {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .agreement-section {
+            background-color: #fbe9e7;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content, .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+            
+            .footer-links {
+                margin-top: 1rem;
+            }
+            
+            .terms-content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tint logo-icon"></i>
+                    Tblood
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="terms-of-service">
+        <div class="container">
+            <div class="terms-content">
+                <h1><i class="fas fa-hand-holding-heart"></i> Terms of Service</h1>
+                <p class="last-updated">Last updated: October 15, 2025</p>
+                
+                <div class="student-notice">
+                    <h3><i class="fas fa-user-graduate"></i> Student Initiative</h3>
+                    <p>Tblood is a student run initiative focused on blood donation awareness and coordination. This is an extracurricular activity and not a registered NGO or commercial organization.</p>
+                </div>
+                
+                <div class="ngo-notice">
+                    <h3><i class="fas fa-handshake"></i> Non Commercial Purpose</h3>
+                    <p>This platform is created for educational and social welfare purposes only. We do not engage in any commercial activities, transactions, or financial exchanges.</p>
+                </div>
+                
+                <h2><i class="fas fa-file-contract"></i> Agreement to Terms</h2>
+                <p>By accessing and using tbloods.online, you acknowledge that this is a student initiative and agree to the terms outlined below. These terms are designed to ensure the proper use of our platform for its intended charitable purposes.</p>
+                
+                <h2><i class="fas fa-users"></i> About Our Initiative</h2>
+                <p>Tblood is:</p>
+                <ul>
+                    <li>A student run extracurricular project</li>
+                    <li>Focused on blood donation awareness and coordination</li>
+                    <li>Not a registered NGO or formal organization</li>
+                    <li>Operating on a non commercial basis</li>
+                    <li>Maintained by volunteers</li>
+                </ul>
+                
+                <h2><i class="fas fa-user-check"></i> User Responsibilities</h2>
+                <p>As a user of our platform, you agree to:</p>
+                <ul>
+                    <li>Use the website only for its intended charitable purposes</li>
+                    <li>Provide accurate information when coordinating blood donations</li>
+                    <li>Respect the privacy and dignity of all users</li>
+                    <li>Not engage in any commercial activities through our platform</li>
+                    <li>Follow all applicable laws and regulations regarding blood donation</li>
+                </ul>
+                
+                <h2><i class="fas fa-shield-alt"></i> Medical Disclaimer</h2>
+                <p><strong>Important:</strong> Our platform only facilitates connections between potential blood donors and those in need. We are not medical professionals and do not provide medical advice.</p>
+                <ul>
+                    <li>All blood donation procedures should follow established medical guidelines</li>
+                    <li>Consult with healthcare professionals for any medical concerns</li>
+                    <li>We are not responsible for any health outcomes related to blood donations</li>
+                    <li>Blood donation eligibility is determined by medical professionals, not our platform</li>
+                </ul>
+                
+                <h2><i class="fas fa-exclamation-circle"></i> Limitation of Liability</h2>
+                <p>As a student initiative, our resources and capabilities are limited:</p>
+                <ul>
+                    <li>We provide this service on a best-effort basis</li>
+                    <li>We cannot guarantee the availability of blood donors</li>
+                    <li>We are not liable for any outcomes resulting from connections made through our platform</li>
+                    <li>Users assume all responsibility for their participation in blood donation activities</li>
+                </ul>
+                
+                <h2><i class="fas fa-heart"></i> Blood Donation Ethics</h2>
+                <p>We adhere to the following ethical principles:</p>
+                <ul>
+                    <li>Blood donation should always be voluntary and unpaid</li>
+                    <li>No commercial transactions for blood are permitted through our platform</li>
+                    <li>We respect donor anonymity and privacy</li>
+                    <li>We promote safe and ethical blood donation practices</li>
+                </ul>
+                
+                <h2><i class="fas fa-sync-alt"></i> Changes to These Terms</h2>
+                <p>We may update these Terms as our initiative evolves. We will notify users of significant changes by posting the updated Terms on this page with a new "Last updated" date.</p>
+                
+                <div class="agreement-section">
+                    <h2><i class="fas fa-handshake"></i> Your Agreement</h2>
+                    <p>By using tbloods.online, you acknowledge that you have read, understood, and agree to these Terms of Service. You understand that this is a student initiative operating for charitable purposes only.</p>
+                </div>
+                
+                <div class="contact-info">
+                    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                    <p>If you have any questions about these Terms of Service or our initiative, please contact our student team:</p>
+                    <ul>
+                        <li>By email: contact@tbloods.online</li>
+                        <li>Through our website: <a href="https://www.tbloods.online/">Visit</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2025 Tblood - All rights reserved.</p>
+                    <p>Making a difference, one donation at a time</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="Privacy-Policy.html">Privacy Policy</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

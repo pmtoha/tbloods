@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - tbloods.online</title>
+    <style>
+        :root {
+            --primary-color: #c62828;
+            --secondary-color: #d32f2f;
+            --accent-color: #ff5252;
+            --light-color: #ffebee;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ffebee;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: #ffccbc;
+        }
+        
+        .privacy-policy {
+            padding: 3rem 0;
+        }
+        
+        .policy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h1 i {
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .no-data-banner {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .no-data-banner h3 {
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .no-data-banner h3 i {
+            margin-right: 10px;
+        }
+        
+        .student-notice {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .student-notice h3 {
+            color: #ef6c00;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .student-notice h3 i {
+            margin-right: 10px;
+        }
+        
+        .last-updated {
+            color: #777;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+        
+        .contact-info {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .copyright {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content, .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+            
+            .footer-links {
+                margin-top: 1rem;
+            }
+            
+            .policy-content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <i class="fas fa-tint logo-icon"></i>
+                    Tblood
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="privacy-policy">
+        <div class="container">
+            <div class="policy-content">
+                <h1><i class="fas fa-user-shield"></i> Privacy Policy</h1>
+                <p class="last-updated">Last updated: October 15, 2025</p>
+                
+                <div class="student-notice">
+                    <h3><i class="fas fa-user-graduate"></i> Student Initiative Notice</h3>
+                    <p>tbloods.online is a student-run blood donation initiative. We are not a registered NGO or commercial organization. This privacy policy reflects our commitment to your privacy as a non-commercial, educational project.</p>
+                </div>
+                
+                <div class="no-data-banner">
+                    <h3><i class="fas fa-check-circle"></i> We Collect No Personal Data</h3>
+                    <p>Our website is designed to provide information about blood donation and coordinate voluntary efforts. We do not collect, store, or process any personal information from our visitors.</p>
+                </div>
+                
+                <h2><i class="fas fa-info-circle"></i> Information We Do Not Collect</h2>
+                <p>To be completely clear about our practices:</p>
+                <ul>
+                    <li>We do not collect payment or financial information</li>
+                    <li>We do not collect location data or device information</li>
+                    <li>We do not use any analytics or tracking tools</li>
+                </ul>
+                
+                <h2><i class="fas fa-cookie-bite"></i> Cookies and Tracking</h2>
+                <p><strong>We do not use cookies or any tracking technologies</strong> on our website. This means:</p>
+                <ul>
+                    <li>No authentication cookies</li>
+                    <li>No analytics or performance cookies</li>
+                    <li>No advertising or targeting cookies</li>
+                    <li>No social media cookies</li>
+                </ul>
+                <p>You can browse our website completely anonymously without any tracking of your activities.</p>
+                
+                <h2><i class="fas fa-external-link-alt"></i> Third-Party Links</h2>
+                <p>Our website may contain links to external websites, such as:</p>
+                <ul>
+                    <li>Official blood bank websites</li>
+                    <li>Health organizations</li>
+                    <li>Educational resources about blood donation</li>
+                    <li>Social Media</li>
+                </ul>
+                <p>Please note that we are not responsible for the content or privacy practices of these external sites. We encourage you to review their privacy policies when visiting them.</p>
+                
+                <h2><i class="fas fa-shield-alt"></i> Data Security</h2>
+                <p>Since we do not collect any personal data, there is no risk of your information being compromised through our website. We maintain appropriate security measures for our website infrastructure to ensure its availability.</p>
+                
+                <h2><i class="fas fa-hand-holding-heart"></i> Blood Donation Coordination</h2>
+                <p>If you choose to participate in our blood donation initiatives through offline means:</p>
+                <ul>
+                    <li>Any information sharing would occur through direct, voluntary communication</li>
+                    <li>We follow ethical guidelines for handling donor information</li>
+                    <li>We respect donor privacy and confidentiality</li>
+                    <li>We do not maintain databases of donor information on this website</li>
+                </ul>
+                
+                <h2><i class="fas fa-child"></i> Children's Privacy</h2>
+                <p>Our website is accessible to everyone, but we do not collect any information from anyone, including children under the age of 13.</p>
+                
+                <h2><i class="fas fa-sync-alt"></i> Changes to This Privacy Policy</h2>
+                <p>We may update our Privacy Policy as our student initiative evolves. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+                <p>You are advised to review this Privacy Policy periodically for any changes.</p>
+                
+                <div class="contact-info">
+                    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy or our student initiative, please contact us:</p>
+                    <ul>
+                        <li>By email: contact@tbloods.online</li>
+                        <li>Through our website: <a href="https://www.tbloods.online/">Visit</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2025 Tblood - All rights reserved.</p>
+                    <p>Your privacy is respected - we collect no data</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="terms-of-Service.html">Terms of Service</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
